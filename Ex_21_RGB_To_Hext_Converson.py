@@ -9,16 +9,23 @@ Note: Your answer should always be 6 characters long, the shorthand with 3 will 
 
 """
 
-def rgb(r, g, b):    
+
+def rgb(r, g, b):
     rgb_list = [r, g, b]
     final_value = ""
     for value in rgb_list:
         if value > 255:
             value = 255
         elif value < 0:
-            value = 0 
+            value = 0
         final_value += ("0" + str(hex(value)[2:]))[-2:]
     return final_value.upper()
 
+
 print(rgb(0, 12, 500))
 
+
+# Solution from site:
+def rgb_2(r, g, b):
+    round = lambda x: min(255, max(x, 0))
+    return ("{:02X}" * 3).format(round(r), round(g), round(b))

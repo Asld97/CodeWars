@@ -7,6 +7,7 @@ Example:
 4 --> 0 (because 4 is already a one-digit number)
 
 """
+
 from functools import reduce
 
 
@@ -15,7 +16,19 @@ def persistence(n, count=0):
         return count
     digits = list(map(int, str(n)))  # Create list of digits in number
     multi = reduce(lambda x, y: x * y, digits)  # Multiply list
-    return persistence(multi, count + 1)    # Repeat until multi < 10
+    return persistence(multi, count + 1)  # Repeat until multi < 10
 
 
 print(persistence(999))
+
+
+def persistence_v2(num):
+    i = 0
+    while num >= 10:
+        num_arr = list(map(lambda x: int(x), str(num)))
+        num = reduce(lambda x, y: x * y, num_arr)
+        i += 1
+    return i
+
+
+print(persistence_v2(999))
